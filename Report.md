@@ -3,19 +3,19 @@ Assignment 6 Solution
 
 # Team Members
 
-- Sanjiv Jha
-- Jérémy Lemée
-- Andrei Ciortea
+- Teo Field-Marsham
+- Nicolas Keller
 
 # GitHub link to your (forked) repository
 
-...
+https://github.com/TeoField-Marsham/Assignment6
 
 # Task 1
 
 1. WebIDs of the group members
 
-Ans:
+Ans: https://solid.interactions.ics.unisg.ch/teofieldmarsham/profile/card#me
+     https://solid.interactions.ics.unisg.ch/nicokeller/profile/card#me
 
 
 2. Group profile
