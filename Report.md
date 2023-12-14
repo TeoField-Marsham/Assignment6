@@ -20,7 +20,7 @@ Ans: https://solid.interactions.ics.unisg.ch/teofieldmarsham/profile/card#me
 
 2. Group profile
 
-Ans: https://solid.interactions.ics.unisg.ch/teofieldmarsham/profile/group-members.ttl
+Ans: https://solid.interactions.ics.unisg.ch/teofieldmarsham/group-members.ttl
 
 
 
