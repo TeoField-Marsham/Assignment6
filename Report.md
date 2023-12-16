@@ -15,7 +15,7 @@ https://github.com/TeoField-Marsham/Assignment6
 1. WebIDs of the group members
 
 Ans: https://solid.interactions.ics.unisg.ch/teofieldmarsham/profile/card#me
-     https://solid.interactions.ics.unisg.ch/nicokeller/profile/card#me
+     https://solid.interactions.ics.unisg.ch/nicokeller1/profile/card#me
 
 
 2. Group profile
