@@ -3,44 +3,38 @@
 <head>
 </head>
 <body>
-    <div>
-        <form action="/movies" method="get">
-            <input name="url" type="text" id="url">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-  <div>
+<div>
+    <form action="/movies" method="get">
+        <input name="url" type="text" id="url">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<div>
     <label>Movies:</label>
-    <ul id="movie_list"></ul>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
+    <div id="movies-container"></div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
 <script>
-var socket = io();
-socket.on('update', (msg) => {
-  console.log("receive message");
-    message = msg['message']
-    console.log("message: ", message)
-    name = message["name"]
-    image_url = message["image"]
-    const node = document.createElement("li");
-    const divNode = document.createElement("div");
-    const textNode = document.createTextNode(name);
-    const imageNode = document.createElement("img");
-    const brNode = document.createElement("br");
-    imageNode.src = image_url
-    divNode.appendChild(textNode);
-    divNode.appendChild(brNode);
-    divNode.appendChild(imageNode)
-    node.appendChild(divNode)
-    document.getElementById("movie_list").appendChild(node);
-  });
+    var socket = io();
+    socket.on('update', (msg) => {
+        var message = msg['message'];
+        var name = message["name"];
+        var image_url = message["image"];
+
+        var movieElement = document.createElement("div");
+        movieElement.innerHTML = `
+                <h3>${name}</h3>
+                <img src="${image_url}" alt="${name}" />
+            `;
+
+        document.getElementById("movies-container").appendChild(movieElement);
+    });
 </script>
 <style>
-  img {
-    width: 100px;
-    height: 200px;
-  }
+    img {
+        width: 100px;
+        height: 200px;
+    }
 </style>
-
 </body>
 </html>
