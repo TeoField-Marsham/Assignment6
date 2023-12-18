@@ -22,10 +22,7 @@
         var image_url = message["image"];
 
         var movieElement = document.createElement("div");
-        movieElement.innerHTML = `
-                <h3>${name}</h3>
-                <img src="${image_url}" alt="${name}" />
-            `;
+        movieElement.innerHTML = `<h3>${name}</h3><img src="${image_url}" alt="${name}" />`;
 
         document.getElementById("movies-container").appendChild(movieElement);
     });
