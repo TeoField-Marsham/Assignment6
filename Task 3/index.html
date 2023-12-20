@@ -13,6 +13,7 @@
     <label>Movies:</label>
     <div id="movies-container"></div>
 </div>
+<div id="movie-count-display"></div>
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io();
@@ -26,11 +27,20 @@
 
         document.getElementById("movies-container").appendChild(movieElement);
     });
+    // Displays the movie count
+    socket.on('movieCount', (data) => {
+        document.getElementById('movie-count-display').innerText = `Total Movies: ${data.count}`;
+    });
 </script>
 <style>
     img {
         width: 100px;
         height: 200px;
+    }
+    #movie-count-display {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 2em;
     }
 </style>
 </body>

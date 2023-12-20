@@ -36,9 +36,10 @@ app.get('/movies', (req, res) => {
 async function handle_query(input_url) {
     let movie_urls = [];
 
-    // Calls countMovies to get the number of movies and print it in the console
+    // Calls countMovies to get the number of movies and print it in the console and emit it to the webpage
     const movieCount = await countMovies(input_url);
     console.log("Total number of movies: ", movieCount);
+    io.emit('movieCount', { 'count': movieCount });
 
     // First query to fetch the URLs of all items in the container
     await engine.queryBindings(`
@@ -99,7 +100,6 @@ async function countMovies(input_url) {
 
     return count;
 }
-
 
 httpServer.listen(port, () => {
     console.log("Server is running on port " + port);
