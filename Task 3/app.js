@@ -31,8 +31,14 @@ app.get('/movies', (req, res) => {
     handle_query(input_url);
 });
 
+// This is the link to the pod containing the movies and should be
+// entered in the search bar: https://solid.interactions.ics.unisg.ch/teofieldmarsham/movies/
 async function handle_query(input_url) {
     let movie_urls = [];
+
+    // Calls countMovies to get the number of movies and print it in the console
+    const movieCount = await countMovies(input_url);
+    console.log("Total number of movies: ", movieCount);
 
     // First query to fetch the URLs of all items in the container
     await engine.queryBindings(`
@@ -70,6 +76,30 @@ async function handle_query(input_url) {
         });
     });
 }
+
+// Additional feature and SPARQL query to find the number of movies
+// contained within the pod.
+async function countMovies(input_url) {
+    let count = 0;
+
+    await engine.queryBindings(`
+        PREFIX ldp: <http://www.w3.org/ns/ldp#>
+        SELECT (COUNT(?movie) AS ?count) WHERE {
+            ?container ldp:contains ?movie .
+        }
+    `, { sources: [input_url] }).then(function (bindingsStream) {
+        return new Promise((resolve, reject) => {
+            bindingsStream.on('data', function (data) {
+                count = parseInt(data.get('count').value);
+            });
+            bindingsStream.on('end', () => resolve(count));
+            bindingsStream.on('error', reject);
+        });
+    });
+
+    return count;
+}
+
 
 httpServer.listen(port, () => {
     console.log("Server is running on port " + port);
