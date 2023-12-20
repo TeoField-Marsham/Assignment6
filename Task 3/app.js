@@ -57,7 +57,7 @@ async function handle_query(input_url) {
                        schema:image ?image .
             }
         `, { sources: movie_urls }).then(function (bindingsStream) {
-            console.log("Movie URLs: ", movie_urls); // Log the fetched movie URLs
+            console.log("Movie URLs: ", movie_urls); // This line prints the fetched movies URLs
 
             // Process each binding to extract movie details
             bindingsStream.on('data', function (data) {
